@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container"></div>
+
+
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 依赖核心库 -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+
+    <!-- 解析耗时会令页面白屏一段时间 -->
+    <script type="text/babel">
+        class Login extends React.Component {
+
+            state = {
+                username: '',
+                password: ''
+            };
+
+
+
+            handleForm(type) {
+                return (event) => {
+                    //console.log(type,event.target.value);
+                    this.setState({[type]: event.target.value});
+                }
+            }
+
+            submit = (event) => {
+                event.preventDefault();
+                const{username, password} = this.state;
+                alert(`输入的账号是${username}，输入的密码是：${password}`);
+            }
+
+
+
+            render() {
+                return(
+                    <form onSubmit={this.submit}>
+                        用户名：<input onChange={this.handleForm('username')} type="text" name='username'/>
+                        密码：<input onChange={this.handleForm('password')} type="password" name='password'/>
+                        <button>登录</button>
+                    </form>
+                )
+            }
+        }
+        ReactDOM.render(<Login/>, document.getElementById('container'));
+    </script>
+</body>
+
+</html>

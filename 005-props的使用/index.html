@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container"></div>
+
+
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 依赖核心库 -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+
+    <!-- 解析耗时会令页面白屏一段时间 -->
+    <script type="text/babel">
+        class MyComponent extends React.Component {
+
+            static propTypes = {
+                name: PropTypes.string,
+                age: PropTypes.number
+            };
+
+            state = {};
+            render() {
+
+                console.log(this);
+                const{name, sex, age} = this.props;
+                return (
+                    
+                    <div>
+                        <ul>
+                            <li>姓名：{name === `张三`?'':name+`432423`}</li>
+                            <li>性别：{sex}</li>
+                            <li>年龄：{age}</li>
+                        </ul>
+                    </div>
+                )
+            }
+        }
+
+        const person = {name:'李四',sex:'男', age:12};
+        ReactDOM.render(<MyComponent name={person.name} sex={person.sex} age={person.age}/>, document.getElementById('container'));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container"></div>
+
+
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 依赖核心库 -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <!-- 解析耗时会令页面白屏一段时间 -->
+    <script type="text/babel">
+        class MyComponent extends React.Component {
+            state = { flag: false };
+
+            render() {
+                return (
+                    <div>
+                        <h1 onClick={this.change}>今天天气{this.state.flag ? '炎热' : '寒冷'}</h1>
+                    </div>
+                )
+            }
+
+            //箭头函数中的this是外层的对象
+            change = () => {
+                console.log(this);
+                this.setState({ flag: !this.state.flag });
+            }
+
+        }
+
+
+        ReactDOM.render(<MyComponent />, document.getElementById('container'));
+    </script>
+</body>
+
+</html>

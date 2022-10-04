@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .test {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+
+
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 依赖核心库 -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <!-- 解析耗时会令页面白屏一段时间 -->
+    <script type="text/babel">
+
+        const id = 'id';
+
+        const content = 'hello react';
+
+        //const VDOM = <h1 id = {id} className = 'test'>{content}</h1>;
+        const VDOM = <h1 id = {id} style = {{backgroundColor:'blue'}}>{content}</h1>;
+
+        const container = document.getElementById('container');
+        ReactDOM.render(VDOM,container);
+
+        /*
+        jsx语法
+            1. 取值用{}，花括号内为js表达式，**非js代码
+            2. 样式的类名要用className
+            3. 内联样式要用{{}}，外层花括号用于解析js，内层为js对象
+            4. 多个标签只能有一个根标签
+            5. 标签必须闭合
+
+
+        */
+
+    </script>
+</body>
+</html>
